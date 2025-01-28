@@ -24,7 +24,7 @@ export const SlideShow = ({
 	className,
 	loaderClassName,
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	delay, //delay between loader transitions
+	delay, //delay between loader transitions 
 }: Imported) => {
 	const [onDisplay, setOnDisplay] = useState({
 		data: slides[0],
