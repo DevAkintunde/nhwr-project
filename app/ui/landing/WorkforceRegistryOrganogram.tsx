@@ -17,7 +17,7 @@ export const WorkforceRegistryOrganogram = () => {
 
 	return (
 		<section className="bg-[#FAFAFA] mb-16">
-			<div className="relative h-[812px] max-w-[1440px] text-white">
+			<div className="relative h-[812px] text-white">
 				<div className="relative max-w-[1200px] h-full mx-auto">
 					<div className="z-20 absolute top-[40%] left-0 right-[20%] max-w-[754]">
 						<div className="font-bold text-[56px]">
@@ -30,7 +30,7 @@ export const WorkforceRegistryOrganogram = () => {
 				</div>
 				<div className="absolute z-10 h-full w-full bg-black opacity-80 top-0 bottom-0 left-0 right-0" />
 				<Image
-					className="object-cover absolute top-0 h-full overflow-hidden"
+					className="object-cover absolute top-0 h-full w-full overflow-hidden"
 					src={hpImage}
 					width={1440}
 					height={812}
