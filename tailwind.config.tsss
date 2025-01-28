@@ -1,0 +1,40 @@
+import type { Config } from "tailwindcss";
+import { RecursiveKeyValuePair } from "tailwindcss/types/config";
+
+function withOpacityValue(variable: string) {
+  return ({ opacityValue }: { opacityValue: string }) => {
+    if (opacityValue === undefined) {
+      return `rgb(var(${variable}))`;
+    }
+    return `rgb(var(${variable}) / ${opacityValue})`;
+  };
+}
+
+const config: Config = {
+  content: ["./src/pages/**/*.{js,ts,jsx,tsx,mdx}", "./src/components/**/*.{js,ts,jsx,tsx,mdx}", "./src/app/**/*.{js,ts,jsx,tsx,mdx}"],
+  theme: {
+    screens: {
+      //mobile: "640px",
+      tab: "768px", // tablet views
+      lg: "1024px", // desktop view
+    },
+    extend: {
+      backgroundImage: {
+        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+        "gradient-conic": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      },
+      colors: {
+        "color-pri": withOpacityValue("--color-pri") as unknown as RecursiveKeyValuePair<string, string>,
+        "color-sec": withOpacityValue("--color-sec") as unknown as RecursiveKeyValuePair<string, string>,
+        "color-bg": withOpacityValue("--color-bg") as unknown as RecursiveKeyValuePair<string, string>,
+        "color-link": withOpacityValue("--color-link") as unknown as RecursiveKeyValuePair<string, string>,
+        "color-text": withOpacityValue("--color-text") as unknown as RecursiveKeyValuePair<string, string>,
+        "color-misc": withOpacityValue("--color-misc") as unknown as RecursiveKeyValuePair<string, string>,
+        "color-danger": withOpacityValue("--color-danger") as unknown as RecursiveKeyValuePair<string, string>,
+        "color-neu": withOpacityValue("--color-neu") as unknown as RecursiveKeyValuePair<string, string>,
+      },
+    },
+  },
+  plugins: [],
+};
+export default config;
