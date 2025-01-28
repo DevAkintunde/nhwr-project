@@ -1,9 +1,9 @@
 "use client";
+import { appConfig } from "@/app.config";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { createPortal } from "react-dom";
-import { appConfig } from "../../../../app.config";
 
 const MainNav = () => {
 	const headerMenu = appConfig.menus.header.nav;

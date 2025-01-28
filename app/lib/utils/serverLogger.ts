@@ -1,4 +1,4 @@
-// working on alternative colorisation
+// work on colorisation of log outputs
 const colors = {
 	error: "red",
 	warn: "yellow",
@@ -8,13 +8,13 @@ const colors = {
 };
 
 export const logger = {
-	info: (title: string, log: any) => {
+	info: (title: string, log: unknown) => {
 		console.log(`%c${title}`, `color: ${colors.info}`, log);
 	},
-	error: (title: string, log: any) => {
+	error: (title: string, log: unknown) => {
 		console.error(`%c${title}`, `color: ${colors.error}`, log);
 	},
-	warn: (title: string, log: any) => {
+	warn: (title: string, log: unknown) => {
 		console.warn(`%c${title}`, `color: ${colors.warn}`, log);
 	},
 };

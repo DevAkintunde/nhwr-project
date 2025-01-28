@@ -1,98 +1,93 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import { appConfig } from "../../../../app.config";
-import { Icons } from "../utils/Icons";
+import { appConfig } from "@/app.config";
 
 export const Footer = () => {
 	const footerSetting = appConfig.menus.footer;
-	const linkClass = "text-color-bg mt-1 tab:mt-4 block";
+	//const linkClass = "text-color-bg mt-1 tab:mt-4 block";
 	return (
-		<footer className="w-full grid grid-cols-1 z-50">
-			<div
-				className="grid items-center tab:place-content-between tab:grid-cols-3 gap-4 px-8 tab:px-24 py-4 tab:py-16"
-				style={{ backgroundColor: "rgba(0, 0, 205, 0.75)", color: "rgba(234, 236, 240, 1)" }}
-			>
-				<div className="col-span-1 mt-3 mb-6 tab:mt-0 tab:mb-0 text-center tab:text-left">
-					<Link
-						href="/"
-						title="Home"
-					>
+		<footer className="w-full bg-black text-white text-sm">
+			<div className="max-w-[1200px] mx-auto pt-32">
+				<div className="grid items-start grid-cols-5">
+					<div className="col-span-2">
 						<Image
 							src={footerSetting.logo}
 							alt="Logo" //className="dark:invert"
-							width={197}
-							height={178.16}
-							className="mx-auto tab:mx-0"
+							width={180}
+							height={47.52}
 							//priority
 						/>
-					</Link>
-					<div className="mt-4 tab:mt-10 max-w-[80%] mx-auto tab:mx-0">{footerSetting.text}</div>
-				</div>
+						<div className="my-10">
+							{`
+						Nigeria Health Workforce Registry (NHWR) is a human resources management tool that enables the States to design and manage a comprehensive human resources for health strategy. It is the single and authoritative source of health workforce information, that can provide accurate count of all healthcare personnel that have either worked or currently working at all tiers of government, private sector, as well as diaspora.
+						`}
+						</div>
+						<div className="">{"© NHWR " + new Date(Date.now()).getFullYear()}</div>
+					</div>
 
-				<div className="tab:col-span-2 grid grid-cols-4 tab:flex tab:flex-nowrap gap-2 tab:gap-12 mb-4 tab:mb-0 items-start tab:place-content-end">
-					{Object.keys(footerSetting.nav).map((group, i) => {
-						return (
-							<nav
-								key={group + i}
-								className="grid place-content-center"
-							>
-								<span className="text-[#98A2B3]">{group}</span>
-								<ol>
-									{footerSetting.nav[group as keyof typeof footerSetting.nav].map((nav, j) => {
-										return (
-											<li key={j}>
-												<Link
-													href={
-														typeof nav === "object" && nav.path
-															? nav.path
-															: typeof nav === "string" && appConfig.socials[nav.toLowerCase() as "facebook"]
-															? appConfig.socials[nav.toLowerCase() as "facebook"]
-															: "#"
-													}
-													className={linkClass}
+					<div className="col-span-3 grid grid-cols-3 gap-4">
+						{Object.keys(footerSetting.nav).map((group, i) => {
+							return (
+								<nav key={group + i} className="place-self-center items-start h-full">
+									<div className="pb-4 font-semibold">{group}</div>
+									<ul className="grid gap-4 text-[#D4D4D4]">
+										{footerSetting.nav[group as keyof typeof footerSetting.nav].map((nav, j) => {
+											return (
+												<li
+													key={j}
+													className=""
 												>
-													{typeof nav === "object" && nav.title ? nav.title : typeof nav === "string" ? nav : ""}
-												</Link>
-											</li>
-										);
-									})}
-								</ol>
-							</nav>
-						);
-					})}
+													<Link
+														href={nav.path}
+														//className={linkClass}
+													>
+														{nav.title}
+													</Link>
+												</li>
+											);
+										})}
+									</ul>
+								</nav>
+							);
+						})}
+					</div>
 				</div>
-			</div>
 
-			<div
-				className="flex place-content-between items-center py-4 tab:py-8 px-16 tab:px-24 text-color-link"
-				style={{ backgroundColor: "#0A0A61", color: "#98A2B3" }}
-			>
-				<span> {"© " + new Date(Date.now()).getFullYear() + ". All rights reserved."}</span>
-				<nav>
-					<ol className="flex gap-2 tab:gap-6">
-						<li>
-							<a href={appConfig.socials.facebook}>
-								<Icons.Facebook className="tab:text-2xl" />
-							</a>
-						</li>
-						<li>
-							<a href={appConfig.socials.instagram}>
-								<Icons.Linkedin className="tab:text-2xl" />
-							</a>
-						</li>
-						<li>
-							<a href={appConfig.socials.twitter}>
-								<Icons.Twitter className="tab:text-2xl" />
-							</a>
-						</li>
-						<li>
-							<a href={appConfig.socials.instagram}>
-								<Icons.Instagram className="tab:text-2xl" />
-							</a>
-						</li>
-					</ol>
-				</nav>
+				<div className="text-[#D4D4D4] flex place-content-between items-center py-20">
+					<nav>
+						<ul className="flex gap-6 sm:gap-10">
+							{footerSetting.bottomNav.links.map((link, j) => {
+								return (
+									<li key={link.path + j}>
+										<Link
+											href={link.path}
+											//className={linkClass}
+										>
+											{link.title}
+										</Link>
+									</li>
+								);
+							})}
+						</ul>
+					</nav>
+					<nav>
+						<ul className="flex gap-6 sm:gap-10">
+							{footerSetting.bottomNav.socials.map((link, j) => {
+								return (
+									<li key={link.path + j}>
+										<Link
+											href={link.path}
+											//className={linkClass}
+										>
+											{link.title}
+										</Link>
+									</li>
+								);
+							})}
+						</ul>
+					</nav>
+				</div>
 			</div>
 		</footer>
 	);

@@ -1,44 +1,44 @@
 "use client";
 import Image from "next/image";
-import React, { useContext } from "react";
-import { appConfig } from "../../../../app.config";
-import MainNav from "../nav/MainNav";
-import AnonAccountButtons from "../nav/AnonAccountButtons";
+import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Account } from "../providers/ProvidersExport";
+import { appConfig } from "@/app.config";
 
 export const Header = () => {
 	const pathname = usePathname();
-	// import current user account detail
-	const { account } = useContext(Account);
+	const headerMenuLinks = appConfig.menus.header.nav;
 	return (
-		<header
-			className={
-				"pt-8 pb-16 px-4 tab:pt-9 tab:pb-20 tab:px-20 grid gap-4 grid-cols-2 tab:flex tab:gap-8 place-content-between items-end w-full" +
-				(pathname === "/" ? " bg-white" : "")
-			}
-		>
-			<Link
-				href="/"
-				title="Home"
-			>
-				<Image
-					src={appConfig.menus.header.logo}
-					alt="Quizmaster Bot Logo" //className="dark:invert"
-					width={150}
-					height={25}
-					priority
-					className="align-baseline max-w-[75%] h-auto -mt-1"
-				/>
-			</Link>
+		<header className={"w-full text-white text-sm z-50" + (pathname !== "/" ? " bg-black" : " absolute")}>
+			<div className="relative flex max-w-[1200px] mx-auto py-10 place-content-between items-center">
+				<Link
+					href="/"
+					title="Home"
+				>
+					<Image
+						src={appConfig.menus.header.logo}
+						alt="NHWR" //className="dark:invert"
+						width={180}
+						height={47.52}
+						priority
+						className="align-baseline max-w-[75%] h-auto -mt-1"
+					/>
+				</Link>
 
-			{pathname !== "/verify" ? (
-				<nav className="flex gap-2 tab:gap-8 tab:flex-wrap items-center flex-row-reverse tab:flex-row place-content-end">
-					<MainNav />
-					{!account || (account && !account.status) ? <AnonAccountButtons /> : null}
-				</nav>
-			) : null}
+				<div className="font-semibold flex gap-10 items-center">
+					{headerMenuLinks.map((link) => {
+						return (
+							<Link
+								key={link.path}
+								href={link.path}
+								title={link.title}
+							>
+								{link.title}
+							</Link>
+						);
+					})}
+				</div>
+			</div>
 		</header>
 	);
 };

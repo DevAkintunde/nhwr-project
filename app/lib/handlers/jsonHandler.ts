@@ -1,7 +1,7 @@
 "use server";
-import { appJsonData } from "../../../../app.config";
-import { logger } from "../utils/serverLogger";
+import { appJsonData } from "@/app.config";
 import { promises as fs } from "fs";
+import { logger } from "../utils/serverLogger";
 
 /**
  * @description Read local json files by defined file location in app.config
