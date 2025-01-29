@@ -8,7 +8,7 @@ export default {
   ],
   theme: {
     screens: {
-      //pod: "640px",
+      //sm: "540px",
       tab: "768px", // tablet views
       lg: "1024px", // desktop view
     },

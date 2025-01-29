@@ -60,31 +60,33 @@ export const WorkforceRegistryOrganogram = () => {
 			</div>
 
 			<div className="mx-32 text-black">
-				<div className="text-5xl py-6 px-10 border shadow-sm border-[#D0FFD8] bg-white max-w-[714px] mx-auto mt-16 text-center">
+				<div className="text-3xl tab:text-5xl py-6 px-10 border shadow-sm border-[#D0FFD8] bg-white max-w-[714px] mx-auto mt-16 text-center">
 					National Health Workforce Registry
 				</div>
 
 				<div>
 					<div className="w-[1px] h-14 bg-[#96E4A8] mx-auto" />
 
-					<div className="relative h-14 grid grid-cols-4 gap-6">
-						<hr className="h-[1.5px] bg-[#96E4A8] w-3/4 absolute left-[12.5%]" />
-						{[1, 2, 3, 4].map((i) => {
+					<div className="hidden relative h-14 tab:grid grid-cols-4 gap-6">
+						{/* <hr className="h-[1.5px] bg-[#96E4A8] w-3/4 absolute left-[12.5%]" /> */}
+						{[1, 2, 3, 4].map((i, j) => {
 							return (
 								<div
 									key={i}
-									className="w-1/2 h-full border-r-[1.5px] border-[#96E4A8]"
-								/>
+									className={"relative w-1/2 h-full border-r-[1.5px] border-[#96E4A8] " + (j !== 0 ? "border-t-[1.5px]" : "")}
+								>
+									<div className={"absolute w-[150%] -left-full -ml-6 -mt-[1.5px] border-[#96E4A8] " + (j !== 0 ? "border-t-[1.5px]" : "")} />
+								</div>
 							);
 						})}
 					</div>
 				</div>
 
-				<div className="grid grid-cols-4 gap-6">
+				<div className="grid tab:grid-cols-4 gap-6">
 					{regions.map((content, index) => {
 						return (
 							<React.Fragment key={content.iso_code + index}>
-								<div className="relative flex items-center gap-2 py-6 px-10 border border-[#D0FFD8] bg-white w-full">
+								<div className="relative flex items-center place-content-center gap-2 py-4 px-4 tab:py-6 tab:px-10 border border-[#D0FFD8] bg-white w-full">
 									<Image
 										src={iconSvg}
 										width={24}
@@ -92,7 +94,14 @@ export const WorkforceRegistryOrganogram = () => {
 										alt={content.name}
 									/>
 									<span>{content.name + " SHWR"}</span>
-									{regions.length - index > 4 ? <div className="absolute top-full left-1/2 h-6 border-r-[1.5px] border-[#96E4A8]" /> : null}
+									{regions.length - index > 1 ? (
+										<div
+											className={
+												"absolute top-full left-1/2 h-6 border-r-[1.5px] border-[#96E4A8]" +
+												(regions.length - index < 5 ? " tab:hidden" : "")
+											}
+										/>
+									) : null}
 								</div>
 							</React.Fragment>
 						);
