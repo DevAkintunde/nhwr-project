@@ -75,7 +75,7 @@ export const WorkforceRegistryOrganogram = () => {
 									key={i}
 									className={"relative w-1/2 h-full border-r-[1.5px] border-[#96E4A8] " + (j !== 0 ? "border-t-[1.5px]" : "")}
 								>
-									<div className={"absolute w-[150%] -left-full -ml-6 -mt-[1.5px] border-[#96E4A8] " + (j !== 0 ? "border-t-[1.5px]" : "")} />
+									<div className={"absolute w-[150%] -left-full -ml-[26px] -mt-[1px] border-[#96E4A8] " + (j !== 0 ? "border-t-[1.5px]" : "")} />
 								</div>
 							);
 						})}
