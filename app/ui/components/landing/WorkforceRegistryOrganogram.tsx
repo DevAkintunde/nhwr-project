@@ -59,7 +59,7 @@ export const WorkforceRegistryOrganogram = () => {
 				/>
 			</div>
 
-			<div className="mx-32 text-black">
+			<div className="mx-12 tab:mx-32 text-black">
 				<div className="text-3xl tab:text-5xl py-6 px-10 border shadow-sm border-[#D0FFD8] bg-white max-w-[714px] mx-auto mt-16 text-center">
 					National Health Workforce Registry
 				</div>
