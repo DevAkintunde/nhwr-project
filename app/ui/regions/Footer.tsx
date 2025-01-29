@@ -8,8 +8,9 @@ export const Footer = () => {
 	//const linkClass = "text-color-bg mt-1 tab:mt-4 block";
 	return (
 		<footer className="w-full bg-black text-white text-sm">
-			<div className="max-w-[1200px] mx-auto pt-32">
-				<div className="grid items-start grid-cols-5">
+			<div className="pt-10 tab:pt-32 px-10 tab:px-32">
+			<div className="max-w-[1200px] mx-auto">
+				<div className="grid gap-20 tab:items-start tab:grid-cols-5">
 					<div className="col-span-2">
 						<Image
 							src={footerSetting.logo}
@@ -26,10 +27,13 @@ export const Footer = () => {
 						<div className="">{"© NHWR " + new Date(Date.now()).getFullYear()}</div>
 					</div>
 
-					<div className="col-span-3 grid grid-cols-3 gap-4">
+					<div className="col-span-3 grid tab:grid-cols-3 gap-4">
 						{Object.keys(footerSetting.nav).map((group, i) => {
 							return (
-								<nav key={group + i} className="place-self-center items-start h-full">
+								<nav
+									key={group + i}
+									className="tab:place-self-center items-start h-full"
+								>
 									<div className="pb-4 font-semibold">{group}</div>
 									<ul className="grid gap-4 text-[#D4D4D4]">
 										{footerSetting.nav[group as keyof typeof footerSetting.nav].map((nav, j) => {
@@ -39,10 +43,10 @@ export const Footer = () => {
 													className=""
 												>
 													<Link
-														href={nav.path}
+														href={(nav.title === "phone" ? "tel: " : nav.title === "email" ? "mailto: " : "") + nav.path}
 														//className={linkClass}
 													>
-														{nav.title}
+														{group.toLowerCase() === "contact" ? nav.path : nav.title}
 													</Link>
 												</li>
 											);
@@ -54,7 +58,7 @@ export const Footer = () => {
 					</div>
 				</div>
 
-				<div className="text-[#D4D4D4] flex place-content-between items-center py-20">
+				<div className="text-[#D4D4D4] grid tab:flex gap-10 place-content-between items-center py-20">
 					<nav>
 						<ul className="flex gap-6 sm:gap-10">
 							{footerSetting.bottomNav.links.map((link, j) => {
@@ -88,7 +92,7 @@ export const Footer = () => {
 						</ul>
 					</nav>
 				</div>
-			</div>
+			</div></div>
 		</footer>
 	);
 };

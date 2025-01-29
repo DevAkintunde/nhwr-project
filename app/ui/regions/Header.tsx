@@ -10,33 +10,36 @@ export const Header = () => {
 	const headerMenuLinks = appConfig.menus.header.nav;
 	return (
 		<header className={"w-full text-white text-sm z-50" + (pathname !== "/" ? " bg-black" : " absolute")}>
-			<div className="relative flex max-w-[1200px] mx-auto py-10 place-content-between items-center">
-				<Link
-					href="/"
-					title="Home"
-				>
-					<Image
-						src={appConfig.menus.header.logo}
-						alt="NHWR" //className="dark:invert"
-						width={180}
-						height={47.52}
-						priority
-						className="align-baseline max-w-[75%] h-auto -mt-1"
-					/>
-				</Link>
+			<div className="p-10 tab:px-32">
+				<div className="relative flex max-w-[1200px] mx-auto py-10 place-content-between items-center">
+					<Link
+						href="/"
+						title="Home"
+					>
+						<Image
+							src={appConfig.menus.header.logo}
+							alt="NHWR" //className="dark:invert"
+							width={180}
+							height={47.52}
+							priority
+							className="align-baseline max-w-[75%] h-auto -mt-1"
+						/>
+					</Link>
 
-				<div className="font-semibold flex gap-10 items-center">
-					{headerMenuLinks.map((link) => {
-						return (
-							<Link
-								key={link.path}
-								href={link.path}
-								title={link.title}
-							>
-								{link.title}
-							</Link>
-						);
-					})}
+					<div className="font-semibold flex gap-10 items-center">
+						{headerMenuLinks.map((link) => {
+							return (
+								<Link
+									key={link.path}
+									href={link.path}
+									title={link.title}
+									className={link.title.toLowerCase() !== "home" ? "hidden tab:inline" : "inline"}
+								>
+									{link.title}
+								</Link>
+							);
+						})}
+					</div>
 				</div>
 			</div>
 		</header>

@@ -1,9 +1,9 @@
-import { WorkforceRegistryOrganogram } from "./ui/landing/WorkforceRegistryOrganogram";
+import { WorkforceRegistryOrganogram } from "./ui/components/landing/WorkforceRegistryOrganogram";
 
 // Website home page
 export default function Home() {
 	return (
-		<div className="relative px-4 tab:px-20 bg-white">
+		<div className="bg-[#FAFAFA]">
 			<WorkforceRegistryOrganogram />
 		</div>
 	);

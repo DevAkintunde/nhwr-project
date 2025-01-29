@@ -5,7 +5,7 @@ import { objectifyStringedKeys } from "@/app/lib/utils/objectifyStringedKeys";
  */
 export const appConfig = {
 	socials: { facebook: "facebook.com/quizbox", twitter: "twitter.com", instagram: "instagram.com", linkedin: "linkedin.com" },
-	partners: [],
+	partners: ["/svgs/partners/partner2.svg", "/svgs/partners/partner1.svg", "/svgs/partners/partner3.svg"],
 	menus: {
 		header: {
 			logo: "/svgs/logo.svg",
@@ -31,7 +31,7 @@ export const appConfig = {
 				],
 				Contact: [
 					{ title: "email", path: "hello@nhwr.com" },
-					{ title: "hone", path: "(+1) (555) 555-1234" },
+					{ title: "phone", path: "(+1) (555) 555-1234" },
 				],
 			},
 			bottomNav: {
