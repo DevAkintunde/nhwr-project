@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { createPortal } from "react-dom";
 
+// potential menu button
 const MainNav = () => {
 	const headerMenu = appConfig.menus.header.nav;
 	{
